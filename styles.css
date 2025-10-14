@@ -1,0 +1,336 @@
+/* --- General Styles --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  background: #0a0a0f;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Smooth scrolling for nav links and offset for fixed header */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* space for fixed top-nav so anchors aren't hidden */
+}
+
+/* --- Top Navigation --- */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* space between left and right groups */
+  padding: 0 15%; /* keep elements away from corners */
+  z-index: 120; /* above most content but below glow (.container z-index:20 kept) */
+  background: linear-gradient(180deg, rgba(10,10,15,0.6), rgba(10,10,15,0.2));
+  backdrop-filter: blur(6px);
+}
+
+.nav-left {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-left .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-center {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-balance {
+  display: none; /* no longer needed */
+}
+
+.nav-logo {
+  width: 36px;
+  height: 36px;
+}
+
+.brand-name {
+  font-weight: 300;
+  font-size: 1.25rem;
+}
+
+.nav-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-cta {
+  background: linear-gradient(90deg,#8b5cf6,#6366f1);
+  color: white;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+.nav-cta:hover { opacity: 0.95; }
+
+.nav-link {
+  color: #d1c4ff;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  font-size: 1.05rem;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+/* --- Starfield --- */
+#starfield {
+  position: fixed; /* keep starfield visible while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* --- Cursor and Grid --- */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(139, 92, 246, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
+}
+
+.grid {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+/* --- Glow --- */
+.glow-container {
+  position: absolute; /* positioned relative to .hero-section so it stays behind the hero content */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  pointer-events: none;
+  z-index: 15; /* sit behind the main .container (.container uses z-index:20) */
+}
+
+.glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 65%);
+  animation: pulseGlow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  user-select: none;
+}
+
+.logo {
+  font-size: 5rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tagline {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* --- Gaussian Curve --- */
+.curve-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 600px;
+  opacity: 0.25;
+  z-index: 10;
+} 
+
+.gaussian-curve {
+  stroke: url(#gradient);
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: drawCurve 3s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+  filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.4));
+  transition: d 0.2s linear;
+}
+
+/* --- Stop Button --- */
+#stop-button {
+  position: absolute;
+  bottom: 18%;
+  right: 18%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 1.2rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+#stop-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- Content Sections --- */
+.content-section {
+  position: relative;
+  z-index: 30;
+  background: transparent; /* let the starfield show through while scrolling */
+  padding: 4rem 2rem;
+}
+
+/* --- Footer --- */
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+  color: #9ca3af;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.site-footer p { margin: 0.5rem 0; }
+
+section {
+  max-width: 900px;
+  margin: 0 auto 4rem auto;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #9ca3af;
+}
+
+/* --- Services Section --- */
+.services-tagline {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.services-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.service-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 50%;
+}
+
+.service-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #c4b5fd;
+}
+
+.service-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.service-box li {
+  margin-bottom: 1rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drawCurve {
+  0% { stroke-dasharray: 3000; stroke-dashoffset: 3000; opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { stroke-dasharray: 3000; stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .logo { font-size: 3rem; }
+  .tagline { font-size: 1rem; }
+  .curve-container { max-width: 95%; height: 400px; }
+  .cursor-dot { display: none; }
+  .services-container { flex-direction: column; }
+  .service-box { width: 100%; }
+}

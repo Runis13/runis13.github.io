@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Gauss</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="starfield"></canvas>
+  <div class="cursor-dot"></div>
+  <div class="grid"></div>
+  <!-- Top navigation -->
+  <nav class="top-nav">
+    <div class="nav-left">
+      <a href="#top" class="brand">
+        <img src="logo.svg" alt="Gauss logo" class="nav-logo" />
+        <span class="brand-name">Gauss</span>
+      </a>
+    </div>
+    <div class="nav-center">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </nav>
+
+  <div class="hero-section" id="top">
+    <div class="glow-container">
+      <div class="glow"></div>
+    </div>
+    <svg class="curve-container" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+          <stop offset="20%" style="stop-color:#6366f1;stop-opacity:0.7" />
+          <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+          <stop offset="80%" style="stop-color:#6366f1;stop-opacity:0.7" />
+          <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+        </linearGradient>
+      </defs>
+      <g id="dataPointsContainer"></g>
+      <path class="gaussian-curve" d="" id="gaussianPath" />
+    </svg>
+
+    <div class="container">
+      <h1 class="logo">Gauss</h1>
+      <p class="tagline">Reaching beyond the average</p>
+    </div>
+    
+    <button id="stop-button">⏸</button>
+  </div>
+
+  <div class="content-section">
+    <section id="about">
+      <h2>About Us</h2>
+      <p>We are a multidisciplinary team of four professionals, master's finalists from FEUP, bringing together expertise in industrial engineering, industrial management, software engineering, artificial intelligence, and data science. With hands-on experience in projects at FEUP, INESCTEC, and JuniFEUP, we are now seeking pilot projects that offer high impact and significant opportunities for growth. We specialize in addressing complex logistical and operational challenges through AI-driven solutions, process optimization, and custom software development—delivering real value where our competencies matter most.</p>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <p class="services-tagline">From chaos to clarity—optimal solutions for complex problems</p>
+      <div class="services-container">
+        <div class="service-box">
+          <h3>Personalized Consultancy</h3>
+          <p>Solving real world problems with the best fit solutions.</p>
+          <ul>
+            <li><strong>Supply Chain Optimization:</strong> End-to-end optimization from production to distribution, warehouse logistics, and inventory management.</li>
+            <li><strong>Predictive Maintenance:</strong> Physics-based and AI models to predict equipment failures before they happen.</li>
+            <li><strong>Customer Behavior Analysis:</strong> AI models to anticipate consumption patterns and preferences.</li>
+            <li><strong>Sales Forecasting:</strong> Leverage historical data and market variables to optimize production and commercial planning.</li>
+            <li><strong>Process Digitalization & Optimization:</strong> Map internal workflows to identify inefficiencies and automation opportunities.</li>
+            <li><strong>Risk Management:</strong> Use AI to identify and mitigate risks across diverse business contexts.</li>
+          </ul>
+        </div>
+        <div class="service-box">
+          <h3>Product & Software Development</h3>
+          <p>Solving new problems by developing innovative solutions.</p>
+          <ul>
+            <li><strong>Custom AI/ML Solutions:</strong> Tailored artificial intelligence and machine learning systems.</li>
+            <li><strong>Process Automation:</strong> Intelligent automation to streamline operations and reduce costs.</li>
+            <li><strong>Data Analytics Platforms:</strong> Transform raw data into actionable insights.</li>
+            <li><strong>Digital Products:</strong> From concept to deployment, we build scalable digital solutions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get in Touch</h2>
+      <p>We'd love to hear about your project. This is a placeholder contact section. Reach out with a brief description of your challenge and we'll follow up with a tailored approach and next steps.</p>
+      <p><strong>Email:</strong> contact@gauss.pt (placeholder)</p>
+      <p><strong>Phone:</strong> +351 900 000 000 (placeholder)</p>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <p><strong>Gauss</strong> — Turning data into decisions.</p>
+    <p>Address: Av. Placeholder 123, Porto, Portugal</p>
+    <p>© 2025 Gauss. All rights reserved. (Filler content)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
