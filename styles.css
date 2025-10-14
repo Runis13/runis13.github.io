@@ -12,10 +12,15 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Smooth scrolling for nav links and offset for fixed header */
+/* Smooth scrolling for nav links */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* space for fixed top-nav so anchors aren't hidden */
+  scroll-padding-top: 0; /* no offset needed for #top anchor */
+}
+
+/* Offset for content sections only (not #top) */
+section {
+  scroll-margin-top: 80px;
 }
 
 /* --- Top Navigation --- */
@@ -133,28 +138,87 @@ html {
 
 /* --- Glow --- */
 .glow-container {
-  position: absolute; /* positioned relative to .hero-section so it stays behind the hero content */
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
+  width: min(90vw, 1200px);
+  height: min(90vh, 800px);
   pointer-events: none;
-  z-index: 15; /* sit behind the main .container (.container uses z-index:20) */
+  z-index: 15;
+  filter: blur(80px);
+  opacity: 0.6;
 }
 
 .glow {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 65%);
-  animation: pulseGlow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  border-radius: 50%;
 }
 
-@keyframes pulseGlow {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+/* Main center glow - tallest (like Gaussian peak) */
+.glow-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.4) 0%, rgba(99, 102, 241, 0.2) 40%, transparent 70%);
+  animation: pulseGlow1 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Left side glow - medium height */
+.glow-2 {
+  top: 55%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 45%;
+  background: radial-gradient(ellipse, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.15) 40%, transparent 70%);
+  animation: pulseGlow2 7s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s;
+}
+
+/* Right side glow - medium height */
+.glow-3 {
+  top: 55%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 45%;
+  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.3) 0%, rgba(99, 102, 241, 0.15) 40%, transparent 70%);
+  animation: pulseGlow3 8s cubic-bezier(0.4, 0, 0.6, 1) infinite 2s;
+}
+
+@keyframes pulseGlow1 {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 1; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.15); 
+    opacity: 0.8; 
+  }
+}
+
+@keyframes pulseGlow2 {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(0.95); 
+    opacity: 0.9; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1); 
+    opacity: 0.7; 
+  }
+}
+
+@keyframes pulseGlow3 {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(0.95); 
+    opacity: 0.85; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1); 
+    opacity: 0.7; 
+  }
 }
 
 /* --- Hero Section --- */
@@ -263,6 +327,7 @@ html {
 section {
   max-width: 900px;
   margin: 0 auto 4rem auto;
+  scroll-margin-top: 80px; /* override for sections inside content-section */
 }
 
 h2 {
@@ -333,4 +398,13 @@ p {
   .cursor-dot { display: none; }
   .services-container { flex-direction: column; }
   .service-box { width: 100%; }
+  
+  /* Adjust glow for mobile */
+  .glow-container {
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+  
+  .glow-1 { height: 60%; }
+  .glow-2, .glow-3 { height: 40%; }
 }

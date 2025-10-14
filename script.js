@@ -167,14 +167,14 @@ function addDataPoint() {
         const exponent = -Math.pow(targetX - mean, 2) / (2 * Math.pow(stdDev, 2));
         const targetY = baseline - (amplitude * Math.exp(exponent));
         
-        // Diagonal shooting star: start from top (above curve), entry depends on side
+        // Diagonal shooting star: enter and exit following the same path
         const fromLeft = targetX < width / 2;
         const startX = fromLeft ? targetX - 150 : targetX + 150;
         const startY = targetY - 150; // start above the curve
         
-        // Exit to opposite bottom corner
-        const exitX = fromLeft ? targetX + 150 : targetX - 150;
-        const exitY = targetY + 150; // exit below the curve
+        // Exit follows the same path in reverse (back to where it came from)
+        const exitX = fromLeft ? targetX - 150 : targetX + 150;
+        const exitY = targetY - 150; // exit back above the curve
         
         dataPoints.push({
             startX: startX,
@@ -203,6 +203,19 @@ function updateDataPoints() {
     for (let i = dataPoints.length - 1; i >= 0; i--) {
         const point = dataPoints[i];
         const age = now - point.createdAt;
+        
+        // If animation is paused, preserve the current state
+        if (animationPaused) {
+            // Store the age when paused to resume correctly later
+            if (!point.pausedAt) {
+                point.pausedAt = age;
+            }
+            continue; // Skip all position/opacity updates
+        } else if (point.pausedAt) {
+            // Resume: adjust createdAt to maintain the same age as when paused
+            point.createdAt = now - point.pausedAt;
+            point.pausedAt = null;
+        }
         
         if (age > POINT_LIFETIME) {
             dataPoints.splice(i, 1);
