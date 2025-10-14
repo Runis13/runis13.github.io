@@ -162,10 +162,11 @@ function updateCurve() {
 // --- Stop Button ---
 const stopButton = document.getElementById('stop-button');
 const glowContainer = document.getElementById('glowContainer');
-stopButton.innerHTML = '⏸'; // pause symbol
+// Use text instead of emoji to avoid color rendering issues on mobile
+stopButton.textContent = '⏸';
 stopButton.addEventListener('click', () => {
     animationPaused = !animationPaused;
-    stopButton.innerHTML = animationPaused ? '▶' : '⏸'; // play or pause
+    stopButton.textContent = animationPaused ? '▶' : '⏸';
     
     // Freeze/unfreeze glow animation
     if (animationPaused) {
