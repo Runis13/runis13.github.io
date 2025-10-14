@@ -161,10 +161,18 @@ function updateCurve() {
 
 // --- Stop Button ---
 const stopButton = document.getElementById('stop-button');
+const glowContainer = document.getElementById('glowContainer');
 stopButton.innerHTML = '⏸'; // pause symbol
 stopButton.addEventListener('click', () => {
     animationPaused = !animationPaused;
     stopButton.innerHTML = animationPaused ? '▶' : '⏸'; // play or pause
+    
+    // Freeze/unfreeze glow animation
+    if (animationPaused) {
+        glowContainer.classList.add('paused');
+    } else {
+        glowContainer.classList.remove('paused');
+    }
 });
 
 // --- Data Points on Curve ---
@@ -300,6 +308,38 @@ setInterval(() => {
         addDataPoint();
     }
 }, isMobile ? 180 : 120); // Slower spawn rate on mobile
+
+// --- Mobile Menu Toggle ---
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navCenter = document.getElementById('navCenter');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navCenter.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        mobileMenuOverlay.style.display = navCenter.classList.contains('active') ? 'block' : 'none';
+    });
+    
+    // Close menu when clicking overlay
+    mobileMenuOverlay.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        navCenter.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        mobileMenuOverlay.style.display = 'none';
+    });
+    
+    // Close menu when clicking a nav link
+    document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            navCenter.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenuOverlay.style.display = 'none';
+        });
+    });
+}
 
 // --- Initializations ---
 setCanvasSize();

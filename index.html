@@ -19,18 +19,22 @@
         <span class="brand-name">Gauss</span>
       </a>
     </div>
-    <div class="nav-center">
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-center" id="navCenter">
       <a href="#about" class="nav-link">About</a>
       <a href="#services" class="nav-link">Services</a>
       <a href="#contact" class="nav-cta">Get in Touch</a>
     </div>
   </nav>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
 
   <div class="hero-section" id="top">
-    <div class="glow-container">
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-      <div class="glow glow-3"></div>
+    <div class="glow-container" id="glowContainer">
+      <div class="glow"></div>
     </div>
     <svg class="curve-container" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid meet">
       <defs>
