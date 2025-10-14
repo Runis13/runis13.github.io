@@ -3,7 +3,9 @@ const canvas = document.getElementById('starfield');
 const ctx = canvas.getContext('2d');
 
 let stars = [];
-const numStars = 800; // Increased star count for a fuller background
+// Adaptive star count based on device
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+const numStars = isMobile ? 300 : 600; // Reduced for better performance
 let animationPaused = false;
 
 function setCanvasSize() {
@@ -109,12 +111,31 @@ const cursorDot = document.querySelector('.cursor-dot');
 let lastKnownMouseX = window.innerWidth / 2;
 let lastKnownMouseY = window.innerHeight / 2;
 
+// Throttle cursor updates for better performance
+let cursorUpdateScheduled = false;
 window.addEventListener('mousemove', (e) => {
     lastKnownMouseX = e.clientX;
     lastKnownMouseY = e.clientY;
-    cursorDot.style.left = `${e.clientX}px`;
-    cursorDot.style.top = `${e.clientY}px`;
+    
+    if (!cursorUpdateScheduled && !isMobile) {
+        cursorUpdateScheduled = true;
+        requestAnimationFrame(() => {
+            cursorDot.style.left = `${lastKnownMouseX}px`;
+            cursorDot.style.top = `${lastKnownMouseY}px`;
+            cursorUpdateScheduled = false;
+        });
+    }
 });
+
+// Touch support for mobile
+if (isMobile) {
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            lastKnownMouseX = e.touches[0].clientX;
+            lastKnownMouseY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+}
 
 function updateCurve() {
     if (!animationPaused) {
@@ -148,7 +169,7 @@ stopButton.addEventListener('click', () => {
 
 // --- Data Points on Curve ---
 const dataPoints = [];
-const MAX_POINTS = 80;
+const MAX_POINTS = isMobile ? 40 : 60; // Fewer points on mobile for better performance
 const POINT_LIFETIME = 1500; // milliseconds (reduced from 3000)
 const ENTRY_DURATION = 400; // milliseconds for entry animation
 const EXIT_DURATION = 400; // milliseconds for exit animation
@@ -244,20 +265,32 @@ function updateDataPoints() {
     }
 }
 
+// Cache for circle elements to avoid recreating
+let circleElements = [];
+
 function drawDataPoints() {
     const container = document.getElementById('dataPointsContainer');
     
-    // Clear existing points
-    container.innerHTML = '';
-    
-    // Draw each point
-    dataPoints.forEach(point => {
+    // Reuse existing circles or create new ones as needed
+    while (circleElements.length < dataPoints.length) {
         const circle = document.createElementNS(svgNS, 'circle');
+        circle.setAttribute('r', 3);
+        container.appendChild(circle);
+        circleElements.push(circle);
+    }
+    
+    // Hide extra circles
+    while (circleElements.length > dataPoints.length) {
+        const circle = circleElements.pop();
+        container.removeChild(circle);
+    }
+    
+    // Update circle positions and opacity
+    dataPoints.forEach((point, i) => {
+        const circle = circleElements[i];
         circle.setAttribute('cx', point.currentX);
         circle.setAttribute('cy', point.currentY);
-        circle.setAttribute('r', 3);
         circle.setAttribute('fill', `rgba(139, 92, 246, ${point.opacity * 0.8})`);
-        container.appendChild(circle);
     });
 }
 
@@ -266,7 +299,7 @@ setInterval(() => {
     if (!animationPaused) {
         addDataPoint();
     }
-}, 120); // add a point every 120ms
+}, isMobile ? 180 : 120); // Slower spawn rate on mobile
 
 // --- Initializations ---
 setCanvasSize();
