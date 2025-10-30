@@ -299,36 +299,6 @@ section {
   filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.4));
 }
 
-/* --- Stop Button --- */
-#stop-button {
-  position: absolute;
-  bottom: 18%;
-  right: 18%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.7);
-  padding: 0.6rem;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 100;
-  font-size: 1.2rem;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  font-family: 'IBM Plex Sans', sans-serif;
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.7);
-  -webkit-font-smoothing: antialiased;
-}
-
-#stop-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.9);
-}
-
 /* --- Content Sections --- */
 .content-section {
   position: relative;
@@ -502,15 +472,6 @@ p {
   .glow { 
     width: 70%;
     height: 60%;
-  }
-  
-  /* Pause button */
-  #stop-button {
-    bottom: 12%;
-    right: 5%;
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
   }
   
   /* Content sections */

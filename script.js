@@ -6,7 +6,6 @@ let stars = [];
 // Adaptive star count based on device
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
 const numStars = isMobile ? 300 : 600; // Reduced for better performance
-let animationPaused = false;
 
 function setCanvasSize() {
     // Use the full document height so the starfield extends past the viewport
@@ -138,19 +137,17 @@ if (isMobile) {
 }
 
 function updateCurve() {
-    if (!animationPaused) {
-        const targetMean = (lastKnownMouseX / window.innerWidth) * (width - 400) + 200;
-        mean += (targetMean - mean) * 0.1;
+    const targetMean = (lastKnownMouseX / window.innerWidth) * (width - 400) + 200;
+    mean += (targetMean - mean) * 0.1;
 
-        const targetStdDev = 100 + (lastKnownMouseY / window.innerHeight) * 200;
-        stdDev += (targetStdDev - stdDev) * 0.1;
+    const targetStdDev = 100 + (lastKnownMouseY / window.innerHeight) * 200;
+    stdDev += (targetStdDev - stdDev) * 0.1;
 
-        // Recompute amplitude from a stable, clamped function so the peak
-        // never grows uncontrollably when stdDev becomes very small.
-        amplitude = computeAmplitude(stdDev);
+    // Recompute amplitude from a stable, clamped function so the peak
+    // never grows uncontrollably when stdDev becomes very small.
+    amplitude = computeAmplitude(stdDev);
 
-        pathElement.setAttribute('d', generatePath(mean, stdDev, amplitude));
-    }
+    pathElement.setAttribute('d', generatePath(mean, stdDev, amplitude));
     
     // Always update and draw data points
     updateDataPoints();
@@ -158,23 +155,6 @@ function updateCurve() {
     
     requestAnimationFrame(updateCurve);
 }
-
-// --- Stop Button ---
-const stopButton = document.getElementById('stop-button');
-const glowContainer = document.getElementById('glowContainer');
-// Use text instead of emoji to avoid color rendering issues on mobile
-stopButton.textContent = '⏸';
-stopButton.addEventListener('click', () => {
-    animationPaused = !animationPaused;
-    stopButton.textContent = animationPaused ? '▶' : '⏸';
-    
-    // Freeze/unfreeze glow animation
-    if (animationPaused) {
-        glowContainer.classList.add('paused');
-    } else {
-        glowContainer.classList.remove('paused');
-    }
-});
 
 // --- Data Points on Curve ---
 const dataPoints = [];
@@ -234,19 +214,6 @@ function updateDataPoints() {
         const point = dataPoints[i];
         const age = now - point.createdAt;
         
-        // If animation is paused, preserve the current state
-        if (animationPaused) {
-            // Store the age when paused to resume correctly later
-            if (!point.pausedAt) {
-                point.pausedAt = age;
-            }
-            continue; // Skip all position/opacity updates
-        } else if (point.pausedAt) {
-            // Resume: adjust createdAt to maintain the same age as when paused
-            point.createdAt = now - point.pausedAt;
-            point.pausedAt = null;
-        }
-        
         if (age > POINT_LIFETIME) {
             dataPoints.splice(i, 1);
         } else if (age < ENTRY_DURATION) {
@@ -305,9 +272,7 @@ function drawDataPoints() {
 
 // Add new point periodically
 setInterval(() => {
-    if (!animationPaused) {
-        addDataPoint();
-    }
+    addDataPoint();
 }, isMobile ? 180 : 120); // Slower spawn rate on mobile
 
 // --- Mobile Menu Toggle ---
