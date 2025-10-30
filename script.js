@@ -60,6 +60,10 @@ window.addEventListener('DOMContentLoaded', () => {
     canvas = document.getElementById('starfield');
     if (canvas) ctx = canvas.getContext('2d');
 
+    // Query SVG elements after DOM is ready so they exist when used
+    pathElement = document.getElementById('gaussianPath');
+    pointsContainer = document.getElementById('dataPointsContainer');
+
     // Re-evaluate mobile sizing now that we know viewport
     isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
     numStars = isMobile ? 300 : 600;
@@ -166,8 +170,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // --- Curve Interaction ---
 const svgNS = "http://www.w3.org/2000/svg";
-const pathElement = document.getElementById('gaussianPath');
-const pointsContainer = document.getElementById('dataPointsContainer');
+// Defer querying these SVG elements until the DOM is ready to avoid
+// null references when the script runs before the elements exist.
+let pathElement;
+let pointsContainer;
 
 const width = 1400;
 const height = 600;
@@ -410,9 +416,6 @@ if (mobileMenuToggle) {
 }
 
 // --- Initializations ---
-setCanvasSize();
-initializeStars();
-drawStars(); // Draw the stars initially
-// Initialize amplitude based on starting stdDev and start animation
-amplitude = computeAmplitude(stdDev);
-updateCurve();
+// Initialization (canvas, stars, amplitude, and animation loop) is
+// handled inside the DOMContentLoaded handler to ensure any DOM
+// elements (SVG path, containers) are present before use.
