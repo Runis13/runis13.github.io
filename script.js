@@ -70,6 +70,88 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Hook up elements used elsewhere
     // (safe to query now)
+    // --- Internationalization (EN / PT) ---
+    const translations = {
+        en: {
+            'nav.about': 'About',
+            'nav.services': 'Services',
+            'nav.cta': 'Get in Touch',
+            'brand': 'Gauss',
+            'tagline': 'Reaching beyond the average',
+            'about.heading': 'About Us',
+            'about.text': `We are a multidisciplinary team of four professionals, master's finalists from FEUP, bringing together expertise in industrial engineering, industrial management, software engineering, artificial intelligence, and data science. With hands-on experience in projects at FEUP, INESCTEC, and JuniFEUP, we are now seeking pilot projects that offer high impact and significant opportunities for growth. We specialize in addressing complex logistical and operational challenges through AI-driven solutions, process optimization, and custom software development—delivering real value where our competencies matter most.`,
+            'services.heading': 'Our Services',
+            'services.tagline': 'From chaos to clarity—optimal solutions for complex problems',
+            'services.h3': 'Consultancy & Industrial Optimization',
+            'services.p': 'We focus on industrial engineering and optimization across operations, logistics and maintenance — practical, measurable improvements delivered through consultancy.',
+            'services.li1': '<strong>Supply chain & inventory optimization</strong> — network design, inventory policies and routing to lower costs and increase service levels.',
+            'services.li2': '<strong>Process and operational optimization</strong> — time studies, value‑stream mapping and throughput improvements.',
+            'services.li3': '<strong>Maintenance & reliability engineering</strong> — failure mode analysis, predictive maintenance strategies, spare‑parts optimization.',
+            'services.li4': '<strong>Production planning & scheduling</strong> — robust plans that align capacity, constraints and demand variability.',
+            'services.li5': '<strong>Decision support & analytics</strong> — clear KPIs, dashboards and scenario analysis to support management decisions.',
+            'services.cta': 'Contact Us',
+            'contact.heading': 'Get in Touch',
+            'contact.p': "We'd love to hear about your project. Reach out with a brief description of your challenge and we'll follow up with a tailored approach and next steps.",
+            'contact.email': '<strong>Email:</strong> contact@gauss.pt',
+            'footer.line1': '<strong>Gauss</strong> — Turning data into decisions.',
+            'footer.line2': '© 2025 Gauss. All rights reserved.'
+        },
+        pt: {
+            'nav.about': 'Sobre',
+            'nav.services': 'Serviços',
+            'nav.cta': 'Contacte-nos',
+            'brand': 'Gauss',
+            'tagline': 'Ir além da média',
+            'about.heading': 'Sobre Nós',
+            'about.text': `Somos uma equipa multidisciplinar de quatro profissionais, finalistas de mestrado na FEUP, com competências em engenharia industrial, gestão industrial, <em>software engineering</em>, <em>artificial intelligence</em> e <em>data science</em>. Com experiência prática em projetos na FEUP, INESCTEC e JuniFEUP, procuramos projetos-piloto de alto impacto com potencial de crescimento. Especializamo-nos em resolver desafios logísticos e operacionais complexos através de soluções orientadas por <em>AI</em>, otimização de processos e desenvolvimento de <em>custom software</em>, entregando valor mensurável onde as nossas competências fazem diferença.`,
+            'services.heading': 'Serviços',
+            'services.tagline': 'Da incerteza à clareza—soluções ótimas para problemas complexos',
+            'services.h3': 'Consultoria & Otimização Industrial',
+            'services.p': 'Focamo-nos em engenharia industrial e otimização nas operações, logística e manutenção — melhorias práticas e mensuráveis entregues por consultoria.',
+            'services.li1': '<strong>Otimização da cadeia de abastecimento e inventário</strong> — desenho de rede, políticas de inventário e rotas para reduzir custos e aumentar níveis de serviço.',
+            'services.li2': '<strong>Otimização de processos e operações</strong> — estudos de tempos, mapeamento de <em>value‑stream</em> e melhorias de throughput.',
+            'services.li3': '<strong>Manutenção & engenharia de fiabilidade</strong> — análise de modos de falha, estratégias de manutenção preditiva e otimização de stocks de peças.',
+            'services.li4': '<strong>Planeamento e programação de produção</strong> — planos robustos que alinham capacidade, restrições e variabilidade da procura.',
+            'services.li5': '<strong>Suporte à decisão & analytics</strong> — KPIs claros, <em>dashboards</em> e análise de cenários para suportar decisões de gestão.',
+            'services.cta': 'Contacte-nos',
+            'contact.heading': 'Contacte-nos',
+            'contact.p': 'Queremos saber sobre o seu projeto. Envie-nos uma breve descrição do desafio e responderemos com uma abordagem personalizada e próximos passos.',
+            'contact.email': '<strong>Email:</strong> contact@gauss.pt',
+            'footer.line1': '<strong>Gauss</strong> — Transformamos dados em decisões.',
+            'footer.line2': '© 2025 Gauss. Todos os direitos reservados.'
+        }
+    };
+
+    function applyTranslations(lang) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const val = (translations[lang] && translations[lang][key]) ? translations[lang][key] : (translations['en'][key] || '');
+            // allow HTML in translations (we control the strings)
+            el.innerHTML = val;
+        });
+
+        // mark active language button
+        document.querySelectorAll('.lang-switch').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+    }
+
+    // wire language buttons
+    document.querySelectorAll('.lang-switch').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const chosen = btn.dataset.lang;
+            localStorage.setItem('site_lang', chosen);
+            applyTranslations(chosen);
+        });
+    });
+
+    // choose initial language (persisted or from navigator)
+    const saved = localStorage.getItem('site_lang');
+    const browserPref = (navigator.language || navigator.userLanguage || 'en').startsWith('pt') ? 'pt' : 'en';
+    const initialLang = saved || browserPref || 'en';
+    applyTranslations(initialLang);
+
     // start the curve + points animation loop
     amplitude = computeAmplitude(stdDev);
     updateCurve();

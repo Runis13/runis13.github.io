@@ -153,6 +153,15 @@ section {
   background: rgba(255,255,255,0.04);
 }
 
+/* Language switch styling */
+.lang-switch {
+  opacity: 0.9;
+}
+.lang-switch.active {
+  border-bottom: 2px solid rgba(139,92,246,0.95);
+  padding-bottom: 2px;
+}
+
 /* --- Starfield --- */
 #starfield {
   position: fixed; /* keep starfield visible while scrolling */
