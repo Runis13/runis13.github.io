@@ -54,8 +54,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Defer all DOM-dependent initialization to DOMContentLoaded to avoid issues when hosted
-window.addEventListener('DOMContentLoaded', () => {
+// Defer all DOM-dependent initialization to an init() routine so it can
+// run whether DOMContentLoaded has already fired or not.
+function init() {
     // Query DOM elements that the script depends on
     canvas = document.getElementById('starfield');
     if (canvas) ctx = canvas.getContext('2d');
@@ -166,7 +167,14 @@ window.addEventListener('DOMContentLoaded', () => {
             addDataPoint();
         }, isMobile ? 180 : 120);
     }
-});
+}
+
+// Ensure init() runs whether DOMContentLoaded already fired or not.
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
 
 // --- Curve Interaction ---
 const svgNS = "http://www.w3.org/2000/svg";
@@ -356,7 +364,8 @@ function updateDataPoints() {
 let circleElements = [];
 
 function drawDataPoints() {
-    const container = document.getElementById('dataPointsContainer');
+    const container = pointsContainer || document.getElementById('dataPointsContainer');
+    if (!container) return; // nothing to draw yet
     
     // Reuse existing circles or create new ones as needed
     while (circleElements.length < dataPoints.length) {
