@@ -1,11 +1,9 @@
 // --- Starfield Canvas Setup ---
-const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
-
+let canvas, ctx;
 let stars = [];
-// Adaptive star count based on device
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
-const numStars = isMobile ? 300 : 600; // Reduced for better performance
+// Adaptive star check (will be set after DOM loads)
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+let numStars = isMobile ? 300 : 600; // default, may be recalculated on init
 
 function setCanvasSize() {
     // Use the full document height so the starfield extends past the viewport
@@ -36,6 +34,9 @@ function drawStars() {
 }
 
 window.addEventListener('resize', () => {
+    // Update isMobile on resize (e.g. orientation change)
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+    numStars = isMobile ? 300 : 600;
     setCanvasSize();
     initializeStars();
     drawStars(); // Redraw stars on resize
@@ -53,10 +54,32 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Defer all DOM-dependent initialization to DOMContentLoaded to avoid issues when hosted
 window.addEventListener('DOMContentLoaded', () => {
+    // Query DOM elements that the script depends on
+    canvas = document.getElementById('starfield');
+    if (canvas) ctx = canvas.getContext('2d');
+
+    // Re-evaluate mobile sizing now that we know viewport
+    isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+    numStars = isMobile ? 300 : 600;
+
     setCanvasSize();
     initializeStars();
     drawStars();
+
+    // Hook up elements used elsewhere
+    // (safe to query now)
+    // start the curve + points animation loop
+    amplitude = computeAmplitude(stdDev);
+    updateCurve();
+
+    // Start data point spawning interval (ensure only one interval)
+    if (!window.__dataPointInterval) {
+        window.__dataPointInterval = setInterval(() => {
+            addDataPoint();
+        }, isMobile ? 180 : 120);
+    }
 });
 
 // --- Curve Interaction ---
@@ -270,10 +293,7 @@ function drawDataPoints() {
     });
 }
 
-// Add new point periodically
-setInterval(() => {
-    addDataPoint();
-}, isMobile ? 180 : 120); // Slower spawn rate on mobile
+// NOTE: spawning interval is started from DOMContentLoaded to avoid running before DOM is ready
 
 // --- Mobile Menu Toggle ---
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
