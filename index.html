@@ -62,9 +62,9 @@
     </a>
 
     <div data-navlinks style="display:flex;align-items:center;gap:30px">
-      <a href="#services" data-i18n="nav_services" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">Services</a>
-      <a href="#method" data-i18n="nav_method" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">Method</a>
-      <a href="#usecases" data-i18n="nav_usecases" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">Use Cases</a>
+      <a href="#services" data-i18n="nav_services" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">Research</a>
+      <a href="#method" data-i18n="nav_method" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">Approach</a>
+      <a href="#usecases" data-i18n="nav_usecases" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">Focus</a>
       <a href="#about" data-i18n="nav_about" style="text-decoration:none;color:var(--ink-2);font-size:14.5px;font-weight:500" style-hover="color:var(--ink)">About</a>
     </div>
 
@@ -77,17 +77,18 @@
       <button onClick="{{ toggleTheme }}" aria-label="Toggle theme" style="width:34px;height:34px;border-radius:9px;border:1px solid var(--line-strong);background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--ink-2)" style-hover="color:var(--ink);border-color:var(--ink-3)">
         <svg ref="{{ themeIconRef }}" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"></path></svg>
       </button>
-      <a href="#contact" data-i18n="nav_cta" style="text-decoration:none;background:var(--accent);color:var(--accent-ink);font-size:14px;font-weight:500;padding:10px 17px;border-radius:9px;white-space:nowrap" style-hover="filter:brightness(1.06)">Discuss a Project</a>
+      <a href="#contact" data-i18n="nav_cta" style="text-decoration:none;background:var(--accent);color:var(--accent-ink);font-size:14px;font-weight:500;padding:10px 17px;border-radius:9px;white-space:nowrap" style-hover="filter:brightness(1.06)">Collaborate</a>
       <button data-hamburger onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none;width:34px;height:34px;border-radius:9px;border:1px solid var(--line-strong);background:transparent;cursor:pointer;align-items:center;justify-content:center;color:var(--ink)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
       </button>
     </div>
+    <div ref="{{ progressRef }}" style="position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left center;will-change:transform;z-index:101"></div>
   </nav>
 
   <div ref="{{ menuRef }}" style="position:fixed;inset:66px 0 auto 0;z-index:99;background:var(--bg);border-bottom:1px solid var(--line);padding:14px clamp(18px,4vw,44px) 22px;display:none;flex-direction:column;gap:4px">
-    <a href="#services" onClick="{{ closeMenu }}" data-i18n="nav_services" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">Services</a>
-    <a href="#method" onClick="{{ closeMenu }}" data-i18n="nav_method" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">Method</a>
-    <a href="#usecases" onClick="{{ closeMenu }}" data-i18n="nav_usecases" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">Use Cases</a>
+    <a href="#services" onClick="{{ closeMenu }}" data-i18n="nav_services" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">Research</a>
+    <a href="#method" onClick="{{ closeMenu }}" data-i18n="nav_method" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">Approach</a>
+    <a href="#usecases" onClick="{{ closeMenu }}" data-i18n="nav_usecases" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">Focus</a>
     <a href="#about" onClick="{{ closeMenu }}" data-i18n="nav_about" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0;border-bottom:1px solid var(--line-2)">About</a>
     <a href="#contact" onClick="{{ closeMenu }}" data-i18n="nav_contact" style="text-decoration:none;color:var(--ink);font-size:18px;font-family:var(--font-display);padding:10px 0">Contact</a>
   </div>
@@ -98,16 +99,16 @@
     <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg, var(--bg) 0%, color-mix(in oklab,var(--bg) 72%,transparent) 36%, transparent 66%), linear-gradient(0deg, var(--bg) 0%, transparent 26%)"></div>
     <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%">
       <div style="max-width:720px">
-        <div data-i18n="hero_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:28px">Applied AI · Optimization · Decision Intelligence</div>
-        <h1 data-i18n="hero_h1" style="font-family:var(--font-display);font-weight:400;font-size:clamp(44px,7vw,84px);line-height:1.02;letter-spacing:-.025em;margin:0 0 26px;color:var(--ink);text-wrap:balance">Applied intelligence for complex decisions.</h1>
-        <p data-i18n="hero_sub" style="font-size:clamp(16px,1.7vw,19.5px);line-height:1.62;color:var(--ink-2);max-width:560px;margin:0 0 38px;text-wrap:pretty">Gauss is an applied AI and optimization consultancy helping organizations design machine learning systems, decision-support tools, and operations research solutions for complex real-world challenges.</p>
+        <div data-i18n="hero_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:28px">Machine Learning · Reinforcement Learning · Operations Research</div>
+        <h1 data-i18n="hero_h1" style="font-family:var(--font-display);font-weight:400;font-size:clamp(44px,7vw,84px);line-height:1.02;letter-spacing:-.025em;margin:0 0 26px;color:var(--ink);text-wrap:balance">A research lab for systems that learn and decide.</h1>
+        <p data-i18n="hero_sub" style="font-size:clamp(16px,1.7vw,19.5px);line-height:1.62;color:var(--ink-2);max-width:560px;margin:0 0 38px;text-wrap:pretty">Gauss is an independent research lab working across machine learning, reinforcement learning, and operations research, turning hard theoretical questions into algorithms and systems that learn, plan, and decide under uncertainty.</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-          <a href="#contact" data-i18n="hero_cta1" style="text-decoration:none;background:var(--accent);color:var(--accent-ink);font-size:15px;font-weight:500;padding:15px 26px;border-radius:10px;box-shadow:0 8px 30px var(--accent-weak)" style-hover="filter:brightness(1.06)">Discuss a Project</a>
-          <a href="#services" data-i18n="hero_cta2" style="text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;padding:15px 24px;border-radius:10px;border:1px solid var(--line-strong);background:color-mix(in oklab,var(--bg) 55%,transparent);backdrop-filter:blur(4px)" style-hover="border-color:var(--ink-3)">Explore Services</a>
+          <a href="#contact" data-i18n="hero_cta1" style="text-decoration:none;background:var(--accent);color:var(--accent-ink);font-size:15px;font-weight:500;padding:15px 26px;border-radius:10px;box-shadow:0 8px 30px var(--accent-weak)" style-hover="filter:brightness(1.06)">Collaborate</a>
+          <a href="#services" data-i18n="hero_cta2" style="text-decoration:none;color:var(--ink);font-size:15px;font-weight:500;padding:15px 24px;border-radius:10px;border:1px solid var(--line-strong);background:color-mix(in oklab,var(--bg) 55%,transparent);backdrop-filter:blur(4px)" style-hover="border-color:var(--ink-3)">Explore research</a>
         </div>
         <div style="margin-top:46px;display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:12px;color:var(--ink-3)">
           <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:gPulse 2.6s ease-in-out infinite"></span>
-          <span data-i18n="hero_hint" style="text-transform:uppercase;letter-spacing:.16em">Move your cursor — reshape the landscape</span>
+          <span data-i18n="hero_hint" style="text-transform:uppercase;letter-spacing:.16em">Move your cursor to reshape the landscape</span>
         </div>
       </div>
     </div>
@@ -116,8 +117,8 @@
   <!-- ============ POSITIONING BAND ============ -->
   <section data-sec style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);padding:84px clamp(18px,4vw,44px)">
     <div class="g-rev" style="max-width:1000px;margin:0 auto;text-align:center">
-      <div data-i18n="pos_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">What we do</div>
-      <p data-i18n="pos_text" style="font-family:var(--font-display);font-weight:300;font-size:clamp(23px,3.4vw,36px);line-height:1.32;letter-spacing:-.01em;color:var(--ink);margin:0;text-wrap:balance">We combine machine learning, operations research, analytics, and software engineering to build practical systems for planning, prediction, optimization, and decision support.</p>
+      <div data-i18n="pos_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px">What we study</div>
+      <p data-i18n="pos_text" style="font-family:var(--font-display);font-weight:300;font-size:clamp(23px,3.4vw,36px);line-height:1.32;letter-spacing:-.01em;color:var(--ink);margin:0;text-wrap:balance">We work at the meeting point of learning and optimization, developing the theory and the systems that let machines reason about uncertainty, act under constraints, and improve from experience.</p>
     </div>
   </section>
 
@@ -125,38 +126,38 @@
   <section id="services" data-sec style="padding:108px clamp(18px,4vw,44px)">
     <div style="max-width:1180px;margin:0 auto">
       <div class="g-rev" style="max-width:640px;margin-bottom:52px">
-        <div data-i18n="srv_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">01 — Services</div>
-        <h2 data-i18n="srv_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)">Capabilities, delivered end to end.</h2>
-        <p data-i18n="srv_sub" style="font-size:17px;color:var(--ink-2);margin:0;max-width:560px">Five connected practices spanning models, optimization, analytics, and the software that puts them to work.</p>
+        <div data-i18n="srv_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">01 · Research</div>
+        <h2 data-i18n="srv_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)">The questions we work on.</h2>
+        <p data-i18n="srv_sub" style="font-size:17px;color:var(--ink-2);margin:0;max-width:560px">Connected lines of inquiry spanning learning, sequential decision-making, and the mathematics that underpins them.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px">
+      <div ref="{{ servicesGridRef }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px">
         <div class="g-rev" style="border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px" style-hover="border-color:var(--line-strong)">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:18px">01</div>
-          <h3 data-i18n="srv1_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Applied AI & Machine Learning</h3>
-          <p data-i18n="srv1_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Predictive models, classification systems, forecasting, anomaly detection, intelligent automation, model evaluation, and deployment-ready prototypes.</p>
+          <h3 data-i18n="srv1_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Machine Learning</h3>
+          <p data-i18n="srv1_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Representation learning, probabilistic models, deep architectures, and the statistical foundations of generalization from data.</p>
         </div>
         <div class="g-rev" style="border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px" style-hover="border-color:var(--line-strong)">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:18px">02</div>
-          <h3 data-i18n="srv2_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Operations Research & Optimization</h3>
-          <p data-i18n="srv2_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Scheduling, routing, capacity planning, inventory optimization, production planning, resource allocation, and constraint-based decision models.</p>
+          <h3 data-i18n="srv2_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Reinforcement Learning</h3>
+          <p data-i18n="srv2_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Sequential decision-making, policy optimization, exploration, multi-agent learning, and control under uncertainty.</p>
         </div>
         <div class="g-rev" style="border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px" style-hover="border-color:var(--line-strong)">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:18px">03</div>
-          <h3 data-i18n="srv3_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Decision Intelligence & Analytics</h3>
-          <p data-i18n="srv3_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">KPI frameworks, dashboards, scenario analysis, simulation, decision-support systems, and data-driven management tools.</p>
+          <h3 data-i18n="srv3_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Operations Research</h3>
+          <p data-i18n="srv3_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Mathematical optimization, combinatorial and stochastic programming, scheduling, and large-scale decision models.</p>
         </div>
         <div class="g-rev" style="border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px" style-hover="border-color:var(--line-strong)">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:18px">04</div>
-          <h3 data-i18n="srv4_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Custom Technical Development</h3>
-          <p data-i18n="srv4_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Data products, internal tools, optimization engines, analytical platforms, APIs, and software prototypes that connect models to real workflows.</p>
+          <h3 data-i18n="srv4_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Decision & Uncertainty</h3>
+          <p data-i18n="srv4_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Bayesian inference, uncertainty quantification, causal reasoning, and robust decisions under noise and partial information.</p>
         </div>
         <div class="g-rev" style="border:1px solid var(--line);border-radius:16px;background:var(--card);padding:30px" style-hover="border-color:var(--line-strong)">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--accent);margin-bottom:18px">05</div>
-          <h3 data-i18n="srv5_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Applied Research & Technical Strategy</h3>
-          <p data-i18n="srv5_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Feasibility studies, AI opportunity assessment, technical roadmaps, model selection, algorithmic design, and research-backed experimentation.</p>
+          <h3 data-i18n="srv5_t" style="font-family:var(--font-display);font-weight:500;font-size:22px;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink)">Learning to Optimize</h3>
+          <p data-i18n="srv5_d" style="font-size:15px;color:var(--ink-2);margin:0;line-height:1.62">Where learning meets operations research, neural combinatorial optimization, differentiable solvers, and data-driven heuristics.</p>
         </div>
         <div class="g-rev" style="border:1px dashed var(--line-strong);border-radius:16px;padding:30px;display:flex;flex-direction:column;justify-content:center;gap:14px">
-          <p data-i18n="srv_cta_t" style="font-family:var(--font-display);font-size:21px;line-height:1.25;color:var(--ink);margin:0">Not sure which fits your problem?</p>
+          <p data-i18n="srv_cta_t" style="font-family:var(--font-display);font-size:21px;line-height:1.25;color:var(--ink);margin:0">Interested in a joint research direction?</p>
           <a href="#contact" data-i18n="srv_cta_l" style="text-decoration:none;color:var(--accent);font-weight:500;font-size:15px;display:inline-flex;align-items:center;gap:8px">Start a conversation →</a>
         </div>
       </div>
@@ -167,40 +168,40 @@
   <section id="method" data-sec style="padding:108px clamp(18px,4vw,44px);background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div style="max-width:1180px;margin:0 auto">
       <div class="g-rev" style="max-width:640px;margin-bottom:46px">
-        <div data-i18n="mth_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">02 — Method</div>
-        <h2 data-i18n="mth_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)">A rigorous path from problem to system.</h2>
-        <p data-i18n="mth_sub" style="font-size:17px;color:var(--ink-2);margin:0">Every engagement follows the same disciplined arc — diagnosed precisely, modelled carefully, validated against reality.</p>
+        <div data-i18n="mth_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">02 · Approach</div>
+        <h2 data-i18n="mth_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)">How we move from question to result.</h2>
+        <p data-i18n="mth_sub" style="font-size:17px;color:var(--ink-2);margin:0">Every line of work follows the same disciplined arc, posed precisely, formalized carefully, validated against evidence.</p>
       </div>
-      <div class="g-rev" style="position:relative;margin-bottom:8px">
+      <div ref="{{ methodWrapRef }}" class="g-rev" style="position:relative;margin-bottom:8px">
         <svg viewBox="0 0 1000 120" preserveAspectRatio="none" style="width:100%;height:70px;display:block">
           <path d="M0 112 C260 110 330 18 500 18 C670 18 740 110 1000 112" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.55"/>
         </svg>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
+      <div ref="{{ methodStripRef }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px">
         <div class="g-rev" style="border-top:2px solid var(--accent);padding-top:18px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-bottom:10px">STEP 01</div>
-          <h3 data-i18n="mth1_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Diagnose the challenge</h3>
-          <p data-i18n="mth1_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Map objectives, constraints, data, and the real decision at stake.</p>
+          <h3 data-i18n="mth1_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Pose the question</h3>
+          <p data-i18n="mth1_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Identify the open problem, its assumptions, and what a meaningful answer would look like.</p>
         </div>
         <div class="g-rev" style="border-top:2px solid var(--line-strong);padding-top:18px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-bottom:10px">STEP 02</div>
-          <h3 data-i18n="mth2_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Model the system</h3>
-          <p data-i18n="mth2_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Formalize the problem mathematically — variables, relationships, uncertainty.</p>
+          <h3 data-i18n="mth2_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Formalize</h3>
+          <p data-i18n="mth2_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Cast the problem mathematically, variables, objectives, and the structure of uncertainty.</p>
         </div>
         <div class="g-rev" style="border-top:2px solid var(--line-strong);padding-top:18px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-bottom:10px">STEP 03</div>
-          <h3 data-i18n="mth3_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Design the solution</h3>
-          <p data-i18n="mth3_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Select methods and architecture that fit the constraints and the team.</p>
+          <h3 data-i18n="mth3_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Develop the method</h3>
+          <p data-i18n="mth3_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Design algorithms and models, grounded in theory and prior work.</p>
         </div>
         <div class="g-rev" style="border-top:2px solid var(--line-strong);padding-top:18px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-bottom:10px">STEP 04</div>
-          <h3 data-i18n="mth4_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Build and validate</h3>
-          <p data-i18n="mth4_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Engineer, test against ground truth, and quantify the gain.</p>
+          <h3 data-i18n="mth4_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Experiment & validate</h3>
+          <p data-i18n="mth4_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Test against benchmarks and ground truth, and quantify what was gained.</p>
         </div>
         <div class="g-rev" style="border-top:2px solid var(--line-strong);padding-top:18px">
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-bottom:10px">STEP 05</div>
-          <h3 data-i18n="mth5_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Deploy, measure, improve</h3>
-          <p data-i18n="mth5_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Ship into the workflow, monitor outcomes, and iterate on results.</p>
+          <h3 data-i18n="mth5_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--ink)">Share & build</h3>
+          <p data-i18n="mth5_d" style="font-size:14px;color:var(--ink-2);margin:0;line-height:1.55">Publish findings openly and turn them into systems others can use.</p>
         </div>
       </div>
     </div>
@@ -210,21 +211,21 @@
   <section id="usecases" data-sec style="padding:108px clamp(18px,4vw,44px)">
     <div style="max-width:1180px;margin:0 auto">
       <div class="g-rev" style="max-width:640px;margin-bottom:46px">
-        <div data-i18n="uc_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">03 — Use Cases</div>
-        <h2 data-i18n="uc_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)">Where our methods apply.</h2>
-        <p data-i18n="uc_sub" style="font-size:17px;color:var(--ink-2);margin:0">Representative problem classes we are equipped to tackle across operations, logistics, and analytics.</p>
+        <div data-i18n="uc_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">03 · Focus</div>
+        <h2 data-i18n="uc_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)">Where our research reaches.</h2>
+        <p data-i18n="uc_sub" style="font-size:17px;color:var(--ink-2);margin:0">Representative problems and domains where our methods make a difference.</p>
       </div>
       <div ref="{{ ucGridRef }}" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden">
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">01</span><span data-i18n="uc1" style="font-size:16px;color:var(--ink);font-weight:500">Demand forecasting</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">02</span><span data-i18n="uc2" style="font-size:16px;color:var(--ink);font-weight:500">Production scheduling</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">03</span><span data-i18n="uc3" style="font-size:16px;color:var(--ink);font-weight:500">Route & logistics optimization</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">04</span><span data-i18n="uc4" style="font-size:16px;color:var(--ink);font-weight:500">Predictive maintenance</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">05</span><span data-i18n="uc5" style="font-size:16px;color:var(--ink);font-weight:500">Inventory policy design</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">06</span><span data-i18n="uc6" style="font-size:16px;color:var(--ink);font-weight:500">Decision-support dashboards</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">07</span><span data-i18n="uc7" style="font-size:16px;color:var(--ink);font-weight:500">AI-assisted operations</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">08</span><span data-i18n="uc8" style="font-size:16px;color:var(--ink);font-weight:500">Simulation & scenario planning</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">09</span><span data-i18n="uc9" style="font-size:16px;color:var(--ink);font-weight:500">Custom ML prototypes</span></div>
-        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">10</span><span data-i18n="uc10" style="font-size:16px;color:var(--ink);font-weight:500">Process optimization</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">01</span><span data-i18n="uc1" style="font-size:16px;color:var(--ink);font-weight:500">Sequential decision-making</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">02</span><span data-i18n="uc2" style="font-size:16px;color:var(--ink);font-weight:500">Combinatorial optimization</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">03</span><span data-i18n="uc3" style="font-size:16px;color:var(--ink);font-weight:500">Learning to optimize</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">04</span><span data-i18n="uc4" style="font-size:16px;color:var(--ink);font-weight:500">Multi-agent systems</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">05</span><span data-i18n="uc5" style="font-size:16px;color:var(--ink);font-weight:500">Probabilistic forecasting</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">06</span><span data-i18n="uc6" style="font-size:16px;color:var(--ink);font-weight:500">Uncertainty quantification</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">07</span><span data-i18n="uc7" style="font-size:16px;color:var(--ink);font-weight:500">Simulation & digital twins</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">08</span><span data-i18n="uc8" style="font-size:16px;color:var(--ink);font-weight:500">Control under constraints</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">09</span><span data-i18n="uc9" style="font-size:16px;color:var(--ink);font-weight:500">Causal inference</span></div>
+        <div class="g-rev" style="background:var(--card);padding:24px 22px;display:flex;flex-direction:column;gap:10px;min-height:118px" style-hover="background:var(--bg-2)"><span style="font-family:var(--font-mono);font-size:12px;color:var(--accent)">10</span><span data-i18n="uc10" style="font-size:16px;color:var(--ink);font-weight:500">Reproducible ML</span></div>
       </div>
     </div>
   </section>
@@ -233,17 +234,17 @@
   <section id="about" data-sec style="padding:108px clamp(18px,4vw,44px);background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,80px)">
       <div class="g-rev">
-        <div data-i18n="why_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">04 — Why Gauss</div>
-        <h2 data-i18n="why_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 20px;color:var(--ink)">Rigor you can put into production.</h2>
-        <p data-i18n="why_p" style="font-size:17px;color:var(--ink-2);margin:0 0 18px;line-height:1.65">Gauss exists to turn complex data, operational constraints, and technical uncertainty into intelligent systems, optimized decisions, and measurable business outcomes.</p>
-        <p data-i18n="why_p2" style="font-size:17px;color:var(--ink-2);margin:0;line-height:1.65">We work where mathematics meets engineering — and we are equally comfortable in a model specification and a production codebase.</p>
+        <div data-i18n="why_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">04 · Why Gauss</div>
+        <h2 data-i18n="why_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 20px;color:var(--ink)">Rigor, in the open.</h2>
+        <p data-i18n="why_p" style="font-size:17px;color:var(--ink-2);margin:0 0 18px;line-height:1.65">Gauss exists to turn hard questions in learning and optimization into theory, algorithms, and open systems that others can build on.</p>
+        <p data-i18n="why_p2" style="font-size:17px;color:var(--ink-2);margin:0;line-height:1.65">We work where mathematics meets computation, equally at home in a proof, a benchmark, and a production codebase.</p>
       </div>
       <div style="display:flex;flex-direction:column">
-        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">01</span><div><h3 data-i18n="why1_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Mathematical & analytical rigor</h3><p data-i18n="why1_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Methods chosen for correctness, not novelty — grounded in statistics and optimization theory.</p></div></div>
-        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">02</span><div><h3 data-i18n="why2_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Practical engineering mindset</h3><p data-i18n="why2_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Models that ship — tested, maintainable, and built to live inside real systems.</p></div></div>
-        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">03</span><div><h3 data-i18n="why3_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Focus on measurable value</h3><p data-i18n="why3_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Success defined as operational outcomes — cost, service level, throughput, accuracy.</p></div></div>
-        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">04</span><div><h3 data-i18n="why4_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Breadth across the stack</h3><p data-i18n="why4_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Fluent across AI, optimization, analytics, and software — one team, one accountable thread.</p></div></div>
-        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">05</span><div><h3 data-i18n="why5_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Clear communication</h3><p data-i18n="why5_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Translating between technical depth and business decisions, without losing either.</p></div></div>
+        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">01</span><div><h3 data-i18n="why1_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Mathematical & analytical rigor</h3><p data-i18n="why1_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Methods chosen for correctness, not novelty, grounded in statistics and optimization theory.</p></div></div>
+        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">02</span><div><h3 data-i18n="why2_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">From theory to system</h3><p data-i18n="why2_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Ideas that run, tested, reproducible, and built to live beyond the paper.</p></div></div>
+        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">03</span><div><h3 data-i18n="why3_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Open by default</h3><p data-i18n="why3_d" style="font-size:14.5px;color:var(--ink-2);margin:0">We share methods, code, and results so the work can be checked, reused, and extended.</p></div></div>
+        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">04</span><div><h3 data-i18n="why4_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Breadth across fields</h3><p data-i18n="why4_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Fluent across ML, RL, and OR, one lab connecting ideas that are usually kept apart.</p></div></div>
+        <div class="g-rev" style="display:flex;gap:20px;padding:22px 0"><span style="font-family:var(--font-display);font-size:26px;color:var(--accent);line-height:1;min-width:42px">05</span><div><h3 data-i18n="why5_t" style="font-family:var(--font-display);font-weight:500;font-size:19px;margin:0 0 5px;color:var(--ink)">Clarity of thought</h3><p data-i18n="why5_d" style="font-size:14.5px;color:var(--ink-2);margin:0">Translating between mathematical depth and real-world problems, without losing either.</p></div></div>
       </div>
     </div>
   </section>
@@ -252,14 +253,14 @@
   <section id="contact" data-sec style="padding:108px clamp(18px,4vw,44px)">
     <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,72px)">
       <div class="g-rev">
-        <div data-i18n="ct_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:18px">05 — Contact</div>
-        <h2 data-i18n="ct_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4.2vw,50px);line-height:1.06;letter-spacing:-.02em;margin:0 0 22px;color:var(--ink);text-wrap:balance">Tell us about the system, process, or decision you want to improve.</h2>
-        <p data-i18n="ct_p" style="font-size:17px;color:var(--ink-2);margin:0 0 28px;line-height:1.6;max-width:460px">Share a short description of your challenge. We will follow up with a considered, technical perspective and clear next steps.</p>
+        <div data-i18n="ct_eyebrow" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:18px">05 · Contact</div>
+        <h2 data-i18n="ct_h2" style="font-family:var(--font-display);font-weight:400;font-size:clamp(30px,4.2vw,50px);line-height:1.06;letter-spacing:-.02em;margin:0 0 22px;color:var(--ink);text-wrap:balance">Tell us about a problem, a collaboration, or an idea worth exploring.</h2>
+        <p data-i18n="ct_p" style="font-size:17px;color:var(--ink-2);margin:0 0 28px;line-height:1.6;max-width:460px">Share a short description of what you are working on. We will follow up with a considered, technical perspective and clear next steps.</p>
         <a href="mailto:contact@gauss.pt" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-family:var(--font-mono);font-size:15px;border:1px solid var(--line-strong);padding:13px 18px;border-radius:10px" style-hover="border-color:var(--ink-3)"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent)"></span>contact@gauss.pt</a>
       </div>
       <form ref="{{ formRef }}" action="https://api.web3forms.com/submit" method="POST" class="g-rev" style="border:1px solid var(--line);border-radius:18px;background:var(--card);padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:16px">
         <input type="hidden" name="access_key" value="32a88e95-9e8e-46e0-a171-431745fa9e44">
-        <input type="hidden" name="subject" value="New Gauss website inquiry">
+        <input type="hidden" name="subject" value="New Gauss research inquiry">
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
         <div style="display:flex;flex-direction:column;gap:7px">
           <label data-i18n="ct_l_name" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">Name</label>
@@ -271,15 +272,15 @@
             <input name="email" type="email" required data-ph="ct_ph_email" placeholder="you@org.com" style="background:var(--bg);border:1px solid var(--line-strong);border-radius:9px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);outline:none;width:100%" style-focus="border-color:var(--accent)"/>
           </div>
           <div style="display:flex;flex-direction:column;gap:7px;min-width:0">
-            <label data-i18n="ct_l_org" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">Organization</label>
-            <input name="org" data-ph="ct_ph_org" placeholder="Company" style="background:var(--bg);border:1px solid var(--line-strong);border-radius:9px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);outline:none;width:100%" style-focus="border-color:var(--accent)"/>
+            <label data-i18n="ct_l_org" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">Affiliation</label>
+            <input name="org" data-ph="ct_ph_org" placeholder="University or company" style="background:var(--bg);border:1px solid var(--line-strong);border-radius:9px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);outline:none;width:100%" style-focus="border-color:var(--accent)"/>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:7px">
-          <label data-i18n="ct_l_msg" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">Project</label>
-          <textarea name="message" rows="4" required data-ph="ct_ph_msg" placeholder="Briefly, the problem you want to solve…" style="background:var(--bg);border:1px solid var(--line-strong);border-radius:9px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);outline:none;resize:vertical" style-focus="border-color:var(--accent)"></textarea>
+          <label data-i18n="ct_l_msg" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">Topic</label>
+          <textarea name="message" rows="4" required data-ph="ct_ph_msg" placeholder="Briefly, the problem or idea you would like to explore…" style="background:var(--bg);border:1px solid var(--line-strong);border-radius:9px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);outline:none;resize:vertical" style-focus="border-color:var(--accent)"></textarea>
         </div>
-        <button type="submit" data-i18n="ct_send" style="background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;margin-top:4px" style-hover="filter:brightness(1.06)">Send inquiry</button>
+        <button type="submit" data-i18n="ct_send" style="background:var(--accent);color:var(--accent-ink);border:none;border-radius:10px;padding:14px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;margin-top:4px" style-hover="filter:brightness(1.06)">Send message</button>
         <p ref="{{ sentRef }}" style="display:none;font-size:14px;color:var(--accent);margin:0;font-family:var(--font-mono)"></p>
       </form>
     </div>
@@ -302,16 +303,16 @@
         <p data-i18n="ft_tag" style="font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0">Beyond the average</p>
       </div>
       <div style="display:flex;gap:28px;flex-wrap:wrap">
-        <a href="#services" data-i18n="nav_services" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">Services</a>
-        <a href="#method" data-i18n="nav_method" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">Method</a>
-        <a href="#usecases" data-i18n="nav_usecases" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">Use Cases</a>
+        <a href="#services" data-i18n="nav_services" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">Research</a>
+        <a href="#method" data-i18n="nav_method" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">Approach</a>
+        <a href="#usecases" data-i18n="nav_usecases" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">Focus</a>
         <a href="#about" data-i18n="nav_about" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">About</a>
         <a href="mailto:contact@gauss.pt" style="text-decoration:none;color:var(--ink-2);font-size:14px" style-hover="color:var(--ink)">contact@gauss.pt</a>
       </div>
     </div>
     <div style="max-width:1180px;margin:34px auto 0;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between">
       <span data-i18n="ft_copy" style="font-size:13px;color:var(--ink-3)">© 2025 Gauss. All rights reserved.</span>
-      <span data-i18n="ft_loc" style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em">Applied AI & Optimization · Porto, Portugal</span>
+      <span data-i18n="ft_loc" style="font-family:var(--font-mono);font-size:12px;color:var(--ink-3);letter-spacing:.04em">AI · ML · RL · OR Research · Porto, Portugal</span>
     </div>
   </footer>
 
@@ -330,6 +331,10 @@ class Component extends DCLogic {
     this.sentRef = React.createRef();
     this.ucGridRef = React.createRef();
     this.heroRef = React.createRef();
+    this.progressRef = React.createRef();
+    this.methodWrapRef = React.createRef();
+    this.methodStripRef = React.createRef();
+    this.servicesGridRef = React.createRef();
     this.i18n = this.buildDict();
   }
 
@@ -345,7 +350,7 @@ class Component extends DCLogic {
     return {
       rootRef:this.rootRef, canvasRef:this.canvasRef, themeIconRef:this.themeIconRef, heroRef:this.heroRef,
       menuRef:this.menuRef, formRef:this.formRef, sentRef:this.sentRef,
-      ucGridRef:this.ucGridRef,
+      ucGridRef:this.ucGridRef, progressRef:this.progressRef, methodWrapRef:this.methodWrapRef, methodStripRef:this.methodStripRef, servicesGridRef:this.servicesGridRef,
       theme:this.cur('theme','light'), accent:'graphite', fontType:'serif',
       toggleTheme:this.toggleTheme, toggleMenu:this.toggleMenu, closeMenu:this.closeMenu, setLang:this.setLang
     };
@@ -355,13 +360,14 @@ class Component extends DCLogic {
     this.applyLang();
     this.applyChrome();
     this.initCanvas();
+    this.initInteractions();
   }
-  componentDidUpdate(){
+  componentDidUpdate(){ this.reapplyInteractive();
     this.applyLang();
     this.applyChrome();
     this.syncColors();
   }
-  componentWillUnmount(){ cancelAnimationFrame(this._raf); if(this._ro) this._ro.disconnect(); }
+  componentWillUnmount(){ cancelAnimationFrame(this._raf); if(this._ro) this._ro.disconnect(); if(this._io) this._io.disconnect(); clearInterval(this._mInt); if(this._mResize) window.removeEventListener('resize', this._mResize); }
 
   // ---------- i18n ----------
   t(k){ const lang = this.state.lang || 'en'; const e = this.i18n[k]; return e ? (e[lang] ?? e.en) : ''; }
@@ -582,6 +588,105 @@ class Component extends DCLogic {
     }
   }
   smooth(x){ return x*x*(3-2*x); }
+
+  // ---------- interactivity ----------
+  initInteractions(){
+    if(this._inited) return; this._inited = true;
+    const root = this.rootRef.current; if(!root) return;
+    const bar = this.progressRef.current;
+    const links = {};
+    root.querySelectorAll('[data-navlinks] a').forEach(a=>{ const h=a.getAttribute('href')||''; if(h[0]==='#') links[h.slice(1)]=a; });
+    const ids = Object.keys(links);
+    this._spyActive = null;
+    this._applySpy = () => { ids.forEach(id=>{ const a=links[id]; if(!a) return; const on=id===this._spyActive; a.style.color=on?'var(--ink)':'var(--ink-2)'; a.style.fontWeight=on?'600':'500'; }); };
+    const onScroll=()=>{ const h=document.documentElement; const max=h.scrollHeight-h.clientHeight; const f=max>0?Math.min(1,Math.max(0,h.scrollTop/max)):0; if(bar) bar.style.transform='scaleX('+f.toFixed(4)+')'; };
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+    this._io=new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting) this._spyActive=e.target.id; }); this._applySpy(); }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    ids.forEach(id=>{ const el=root.querySelector('#'+id); if(el) this._io.observe(el); });
+    this.initMethod(root);
+    this.ensureMotifs();
+  }
+
+  ensureMarker(){
+    const wrap=this.methodWrapRef.current; if(!wrap) return null;
+    if(this._mMarker && this._mMarker.isConnected) return this._mMarker;
+    const m=document.createElement('div');
+    m.style.cssText='position:absolute;left:10%;top:50%;width:13px;height:13px;border-radius:50%;background:var(--accent);transform:translate(-50%,-50%);box-shadow:0 0 0 5px var(--accent-weak),0 0 18px var(--accent);transition:left .55s cubic-bezier(.4,0,.2,1),top .55s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:2';
+    wrap.appendChild(m); this._mMarker=m; return m;
+  }
+  methodY(frac){ const wrap=this.methodWrapRef.current; const path=wrap?wrap.querySelector('path'):null; if(!path) return 0.5; const L=path.getTotalLength(); const tx=frac*1000; let by=60,bd=1e9; for(let i=0;i<=240;i++){ const pt=path.getPointAtLength(L*i/240); const d=Math.abs(pt.x-tx); if(d<bd){bd=d;by=pt.y;} } return by/120; }
+  placeMarker(i){ const wrap=this.methodWrapRef.current, m=this.ensureMarker(); if(!wrap||!m||!this._mN) return; const frac=(i+0.5)/this._mN; m.style.left=(frac*(wrap.clientWidth||1))+'px'; m.style.top=(this.methodY(frac)*70)+'px'; }
+  setMethod(i){ const strip=this.methodStripRef.current; if(!strip) return; const steps=[...strip.children]; this._mStep=i; steps.forEach((s,k)=>{ const on=k===i; s.style.transition='border-color .4s ease, transform .35s ease'; s.style.borderTopColor=on?'var(--accent)':'var(--line-strong)'; s.style.transform=on?'translateY(-3px)':'none'; const lbl=s.querySelector('div'); if(lbl) lbl.style.color=on?'var(--accent)':'var(--ink-3)'; }); this.placeMarker(i); }
+  initMethod(root){
+    const strip=this.methodStripRef.current; if(!strip) return;
+    const steps=[...strip.children]; this._mN=steps.length; if(!this._mN) return;
+    this._mStep=0;
+    steps.forEach((s,i)=>{ s.addEventListener('pointerenter',()=>{ this._mHover=true; this.setMethod(i); }); });
+    strip.addEventListener('pointerleave',()=>{ this._mHover=false; });
+    requestAnimationFrame(()=>this.setMethod(0));
+    clearInterval(this._mInt);
+    this._mInt=setInterval(()=>{ if(this._mHover) return; this.setMethod(((this._mStep||0)+1)%this._mN); }, 2600);
+    this._mResize=()=>this.placeMarker(this._mStep||0); window.addEventListener('resize', this._mResize);
+  }
+  reapplyInteractive(){ if(!this._inited) return; if(this._applySpy) this._applySpy(); if(this._mN) this.setMethod(this._mStep||0); this.ensureMotifs(); }
+
+  // ---------- meaningful motifs ----------
+  ensureMotifs(){ this.ensureServiceMotifs(); this.ensureUseCaseMotifs(); }
+
+  buildBell(){
+    const NS='http://www.w3.org/2000/svg';
+    const svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox','0 0 100 54'); svg.setAttribute('width','86'); svg.setAttribute('height','46');
+    svg.setAttribute('preserveAspectRatio','none');
+    svg.style.cssText='position:absolute;top:22px;right:22px;overflow:visible;opacity:.5;transition:opacity .45s ease;pointer-events:none';
+    const ax=document.createElementNS(NS,'line'); ax.setAttribute('x1','4');ax.setAttribute('y1','47');ax.setAttribute('x2','96');ax.setAttribute('y2','47');ax.setAttribute('stroke','var(--line-strong)');ax.setAttribute('stroke-width','1'); svg.appendChild(ax);
+    const fill=document.createElementNS(NS,'path'); fill.setAttribute('fill','var(--accent)'); fill.setAttribute('fill-opacity','0'); fill.setAttribute('stroke','none'); svg.appendChild(fill); svg._fill=fill;
+    const mean=document.createElementNS(NS,'line'); mean.setAttribute('stroke','var(--accent)'); mean.setAttribute('stroke-width','1'); mean.setAttribute('stroke-dasharray','3 4'); mean.setAttribute('stroke-opacity','0'); svg.appendChild(mean); svg._mean=mean;
+    const p=document.createElementNS(NS,'path'); p.setAttribute('fill','none'); p.setAttribute('stroke','var(--accent)'); p.setAttribute('stroke-width','2'); p.setAttribute('stroke-linejoin','round'); p.setAttribute('stroke-linecap','round'); svg.appendChild(p); svg._path=p;
+    svg._sig=15; svg._target=15;
+    this.drawBell(svg);
+    return svg;
+  }
+  drawBell(svg){
+    const B=47, mu=50, sig=svg._sig, A=Math.min(39, 300/sig);
+    const y=x=>B - A*Math.exp(-Math.pow(x-mu,2)/(2*sig*sig));
+    let d=''; for(let x=6;x<=94;x+=2){ d+=(x===6?'M':'L')+x.toFixed(1)+' '+y(x).toFixed(2)+' '; }
+    const dd=d.trim();
+    svg._path.setAttribute('d', dd);
+    svg._fill.setAttribute('d', dd+' L94 '+B+' L6 '+B+' Z');
+    svg._mean.setAttribute('x1',mu); svg._mean.setAttribute('x2',mu); svg._mean.setAttribute('y1',y(mu).toFixed(2)); svg._mean.setAttribute('y2',B);
+    const t=Math.min(1,Math.max(0,(15-sig)/8));
+    svg._fill.setAttribute('fill-opacity',(0.05+0.16*t).toFixed(3));
+    svg._mean.setAttribute('stroke-opacity',(0.15+0.35*t).toFixed(3));
+    svg._path.setAttribute('stroke-opacity',(0.55+0.4*t).toFixed(3));
+  }
+  setBell(svg,on){
+    svg._target = on?6.5:15;
+    svg.style.opacity = on?'1':'.5';
+    if(svg._raf) return;
+    const step=()=>{ const diff=svg._target-svg._sig; if(Math.abs(diff)<0.04){ svg._sig=svg._target; this.drawBell(svg); svg._raf=0; return; } svg._sig+=diff*0.18; this.drawBell(svg); svg._raf=requestAnimationFrame(step); };
+    svg._raf=requestAnimationFrame(step);
+  }
+  ensureServiceMotifs(){
+    const sg=this.servicesGridRef.current; if(!sg) return;
+    [...sg.children].forEach(card=>{
+      if(getComputedStyle(card).borderTopStyle==='dashed') return;
+      if(!card._gSvg || !card._gSvg.isConnected){ const svg=this.buildBell(); card.style.position='relative'; card.appendChild(svg); card._gSvg=svg; }
+      if(!card._gWired){ card._gWired=true; card.addEventListener('pointerenter',()=>{ if(card._gSvg) this.setBell(card._gSvg,true); }); card.addEventListener('pointerleave',()=>{ if(card._gSvg) this.setBell(card._gSvg,false); }); }
+    });
+  }
+  ensureUseCaseMotifs(){
+    const grid=this.ucGridRef.current; if(!grid) return;
+    [...grid.children].forEach(cell=>{
+      if(!cell._gWired){
+        cell._gWired=true;
+        cell.style.transition='transform .25s ease, background-color .25s ease, box-shadow .25s ease';
+        cell.addEventListener('pointerenter',()=>{ cell.style.transform='translateY(-4px)'; cell.style.backgroundColor='color-mix(in oklab, var(--accent) 8%, var(--card))'; cell.style.boxShadow='inset 3px 0 0 var(--accent)'; });
+        cell.addEventListener('pointerleave',()=>{ cell.style.transform='none'; cell.style.backgroundColor='var(--card)'; cell.style.boxShadow='none'; });
+      }
+    });
+  }
+
   hex(col,a){
     // col is hex like #aabbcc
     const n=col.replace('#',''); const r=parseInt(n.slice(0,2),16),g=parseInt(n.slice(2,4),16),b=parseInt(n.slice(4,6),16);
@@ -591,66 +696,66 @@ class Component extends DCLogic {
   // ---------- dictionary ----------
   buildDict(){
     return {
-      nav_about:{en:'About',pt:'Sobre'}, nav_services:{en:'Services',pt:'Serviços'}, nav_method:{en:'Method',pt:'Método'},
-      nav_usecases:{en:'Use Cases',pt:'Casos de Uso'}, nav_contact:{en:'Contact',pt:'Contacto'}, nav_cta:{en:'Discuss a Project',pt:'Falar sobre um Projeto'},
-      hero_eyebrow:{en:'Applied AI · Optimization · Decision Intelligence',pt:'IA Aplicada · Otimização · Inteligência de Decisão'},
-      hero_h1:{en:'Applied intelligence for complex decisions.',pt:'Inteligência aplicada para decisões complexas.'},
-      hero_sub:{en:'Gauss is an applied AI and optimization consultancy helping organizations design machine learning systems, decision-support tools, and operations research solutions for complex real-world challenges.',pt:'A Gauss é uma consultora de IA aplicada e otimização que ajuda organizações a desenhar sistemas de machine learning, ferramentas de apoio à decisão e soluções de investigação operacional para desafios reais e complexos.'},
-      hero_cta1:{en:'Discuss a Project',pt:'Falar sobre um Projeto'}, hero_cta2:{en:'Explore Services',pt:'Explorar Serviços'},
+      nav_about:{en:'About',pt:'Sobre'}, nav_services:{en:'Research',pt:'Investigação'}, nav_method:{en:'Approach',pt:'Abordagem'},
+      nav_usecases:{en:'Focus',pt:'Focos'}, nav_contact:{en:'Contact',pt:'Contacto'}, nav_cta:{en:'Collaborate',pt:'Colaborar'},
+      hero_eyebrow:{en:'Machine Learning · Reinforcement Learning · Operations Research',pt:'Machine Learning · Reinforcement Learning · Investigação Operacional'},
+      hero_h1:{en:'A research lab for systems that learn and decide.',pt:'Um laboratório de investigação para sistemas que aprendem e decidem.'},
+      hero_sub:{en:'Gauss is an independent research lab working across machine learning, reinforcement learning, and operations research, turning hard theoretical questions into algorithms and systems that learn, plan, and decide under uncertainty.',pt:'A Gauss é um laboratório de investigação independente que trabalha em machine learning, reinforcement learning e investigação operacional, transformando questões teóricas difíceis em algoritmos e sistemas que aprendem, planeiam e decidem sob incerteza.'},
+      hero_cta1:{en:'Collaborate with us',pt:'Colabore connosco'}, hero_cta2:{en:'Explore research',pt:'Explorar investigação'},
       hero_tag:{en:'Beyond the average',pt:'Além da média'},
-      hero_hint:{en:'Move your cursor — reshape the landscape',pt:'Mova o cursor — molde a paisagem'},
-      pos_eyebrow:{en:'What we do',pt:'O que fazemos'},
-      pos_text:{en:'We combine machine learning, operations research, analytics, and software engineering to build practical systems for planning, prediction, optimization, and decision support.',pt:'Combinamos machine learning, investigação operacional, analítica e engenharia de software para construir sistemas práticos de planeamento, previsão, otimização e apoio à decisão.'},
-      srv_eyebrow:{en:'01 — Services',pt:'01 — Serviços'},
-      srv_h2:{en:'Capabilities, delivered end to end.',pt:'Competências, entregues de ponta a ponta.'},
-      srv_sub:{en:'Five connected practices spanning models, optimization, analytics, and the software that puts them to work.',pt:'Cinco práticas interligadas que abrangem modelos, otimização, analítica e o software que os coloca a trabalhar.'},
-      srv1_t:{en:'Applied AI & Machine Learning',pt:'IA Aplicada & Machine Learning'},
-      srv1_d:{en:'Predictive models, classification systems, forecasting, anomaly detection, intelligent automation, model evaluation, and deployment-ready prototypes.',pt:'Modelos preditivos, classificação, previsão, deteção de anomalias, automação inteligente, avaliação de modelos e protótipos prontos para produção.'},
-      srv2_t:{en:'Operations Research & Optimization',pt:'Investigação Operacional & Otimização'},
-      srv2_d:{en:'Scheduling, routing, capacity planning, inventory optimization, production planning, resource allocation, and constraint-based decision models.',pt:'Escalonamento, roteamento, planeamento de capacidade, otimização de inventário, planeamento de produção, alocação de recursos e modelos de decisão com restrições.'},
-      srv3_t:{en:'Decision Intelligence & Analytics',pt:'Inteligência de Decisão & Analítica'},
-      srv3_d:{en:'KPI frameworks, dashboards, scenario analysis, simulation, decision-support systems, and data-driven management tools.',pt:'Frameworks de KPIs, dashboards, análise de cenários, simulação, sistemas de apoio à decisão e ferramentas de gestão orientadas por dados.'},
-      srv4_t:{en:'Custom Technical Development',pt:'Desenvolvimento Técnico à Medida'},
-      srv4_d:{en:'Data products, internal tools, optimization engines, analytical platforms, APIs, and software prototypes that connect models to real workflows.',pt:'Produtos de dados, ferramentas internas, motores de otimização, plataformas analíticas, APIs e protótipos de software que ligam modelos a fluxos de trabalho reais.'},
-      srv5_t:{en:'Applied Research & Technical Strategy',pt:'Investigação Aplicada & Estratégia Técnica'},
-      srv5_d:{en:'Feasibility studies, AI opportunity assessment, technical roadmaps, model selection, algorithmic design, and research-backed experimentation.',pt:'Estudos de viabilidade, avaliação de oportunidades de IA, roadmaps técnicos, seleção de modelos, desenho algorítmico e experimentação fundamentada em investigação.'},
-      srv_cta_t:{en:'Not sure which fits your problem?',pt:'Sem certezas sobre qual se aplica?'},
+      hero_hint:{en:'Move your cursor to reshape the landscape',pt:'Mova o cursor para moldar a paisagem'},
+      pos_eyebrow:{en:'What we study',pt:'O que estudamos'},
+      pos_text:{en:'We work at the meeting point of learning and optimization, developing the theory and the systems that let machines reason about uncertainty, act under constraints, and improve from experience.',pt:'Trabalhamos no ponto de encontro entre aprendizagem e otimização, desenvolvendo a teoria e os sistemas que permitem às máquinas raciocinar sob incerteza, agir com restrições e melhorar com a experiência.'},
+      srv_eyebrow:{en:'01 · Research',pt:'01 · Investigação'},
+      srv_h2:{en:'The questions we work on.',pt:'As questões em que trabalhamos.'},
+      srv_sub:{en:'Connected lines of inquiry spanning learning, sequential decision-making, and the mathematics that underpins them.',pt:'Linhas de investigação interligadas que abrangem aprendizagem, decisão sequencial e a matemática que as sustenta.'},
+      srv1_t:{en:'Machine Learning',pt:'Machine Learning'},
+      srv1_d:{en:'Representation learning, probabilistic models, deep architectures, and the statistical foundations of generalization from data.',pt:'Aprendizagem de representações, modelos probabilísticos, arquiteturas profundas e os fundamentos estatísticos da generalização a partir de dados.'},
+      srv2_t:{en:'Reinforcement Learning',pt:'Reinforcement Learning'},
+      srv2_d:{en:'Sequential decision-making, policy optimization, exploration, multi-agent learning, and control under uncertainty.',pt:'Decisão sequencial, otimização de políticas, exploração, aprendizagem multi-agente e controlo sob incerteza.'},
+      srv3_t:{en:'Operations Research',pt:'Investigação Operacional'},
+      srv3_d:{en:'Mathematical optimization, combinatorial and stochastic programming, scheduling, and large-scale decision models.',pt:'Otimização matemática, programação combinatória e estocástica, escalonamento e modelos de decisão em larga escala.'},
+      srv4_t:{en:'Decision & Uncertainty',pt:'Decisão & Incerteza'},
+      srv4_d:{en:'Bayesian inference, uncertainty quantification, causal reasoning, and robust decisions under noise and partial information.',pt:'Inferência bayesiana, quantificação de incerteza, raciocínio causal e decisões robustas sob ruído e informação parcial.'},
+      srv5_t:{en:'Learning to Optimize',pt:'Aprender a Otimizar'},
+      srv5_d:{en:'Where learning meets operations research, neural combinatorial optimization, differentiable solvers, and data-driven heuristics.',pt:'Onde a aprendizagem encontra a investigação operacional: otimização combinatória neural, solvers diferenciáveis e heurísticas orientadas por dados.'},
+      srv_cta_t:{en:'Interested in a joint research direction?',pt:'Interessado numa direção de investigação conjunta?'},
       srv_cta_l:{en:'Start a conversation →',pt:'Iniciar uma conversa →'},
-      mth_eyebrow:{en:'02 — Method',pt:'02 — Método'},
-      mth_h2:{en:'A rigorous path from problem to system.',pt:'Um caminho rigoroso do problema ao sistema.'},
-      mth_sub:{en:'Every engagement follows the same disciplined arc — diagnosed precisely, modelled carefully, validated against reality.',pt:'Cada projeto segue o mesmo arco disciplinado — diagnosticado com precisão, modelado com cuidado, validado contra a realidade.'},
-      mth1_t:{en:'Diagnose the challenge',pt:'Diagnosticar o desafio'}, mth1_d:{en:'Map objectives, constraints, data, and the real decision at stake.',pt:'Mapear objetivos, restrições, dados e a decisão real em jogo.'},
-      mth2_t:{en:'Model the system',pt:'Modelar o sistema'}, mth2_d:{en:'Formalize the problem mathematically — variables, relationships, uncertainty.',pt:'Formalizar o problema matematicamente — variáveis, relações, incerteza.'},
-      mth3_t:{en:'Design the solution',pt:'Desenhar a solução'}, mth3_d:{en:'Select methods and architecture that fit the constraints and the team.',pt:'Selecionar métodos e arquitetura que se adequam às restrições e à equipa.'},
-      mth4_t:{en:'Build and validate',pt:'Construir e validar'}, mth4_d:{en:'Engineer, test against ground truth, and quantify the gain.',pt:'Desenvolver, testar contra dados reais e quantificar o ganho.'},
-      mth5_t:{en:'Deploy, measure, improve',pt:'Implementar, medir, melhorar'}, mth5_d:{en:'Ship into the workflow, monitor outcomes, and iterate on results.',pt:'Colocar no fluxo de trabalho, monitorizar resultados e iterar.'},
-      uc_eyebrow:{en:'03 — Use Cases',pt:'03 — Casos de Uso'},
-      uc_h2:{en:'Where our methods apply.',pt:'Onde os nossos métodos se aplicam.'},
-      uc_sub:{en:'Representative problem classes we are equipped to tackle across operations, logistics, and analytics.',pt:'Classes de problemas representativas que estamos preparados para resolver em operações, logística e analítica.'},
-      uc1:{en:'Demand forecasting',pt:'Previsão de procura'}, uc2:{en:'Production scheduling',pt:'Escalonamento de produção'},
-      uc3:{en:'Route & logistics optimization',pt:'Otimização de rotas e logística'}, uc4:{en:'Predictive maintenance',pt:'Manutenção preditiva'},
-      uc5:{en:'Inventory policy design',pt:'Desenho de políticas de inventário'}, uc6:{en:'Decision-support dashboards',pt:'Dashboards de apoio à decisão'},
-      uc7:{en:'AI-assisted operations',pt:'Operações assistidas por IA'}, uc8:{en:'Simulation & scenario planning',pt:'Simulação e análise de cenários'},
-      uc9:{en:'Custom ML prototypes',pt:'Protótipos de ML à medida'}, uc10:{en:'Process optimization',pt:'Otimização de processos'},
-      why_eyebrow:{en:'04 — Why Gauss',pt:'04 — Porquê a Gauss'},
-      why_h2:{en:'Rigor you can put into production.',pt:'Rigor que se coloca em produção.'},
-      why_p:{en:'Gauss exists to turn complex data, operational constraints, and technical uncertainty into intelligent systems, optimized decisions, and measurable business outcomes.',pt:'A Gauss existe para transformar dados complexos, restrições operacionais e incerteza técnica em sistemas inteligentes, decisões otimizadas e resultados de negócio mensuráveis.'},
-      why_p2:{en:'We work where mathematics meets engineering — and we are equally comfortable in a model specification and a production codebase.',pt:'Trabalhamos onde a matemática encontra a engenharia — e sentimo-nos igualmente à vontade numa especificação de modelo e numa base de código em produção.'},
-      why1_t:{en:'Mathematical & analytical rigor',pt:'Rigor matemático e analítico'}, why1_d:{en:'Methods chosen for correctness, not novelty — grounded in statistics and optimization theory.',pt:'Métodos escolhidos pela correção, não pela novidade — fundamentados em estatística e teoria da otimização.'},
-      why2_t:{en:'Practical engineering mindset',pt:'Mentalidade prática de engenharia'}, why2_d:{en:'Models that ship — tested, maintainable, and built to live inside real systems.',pt:'Modelos que chegam a produção — testados, sustentáveis e feitos para viver em sistemas reais.'},
-      why3_t:{en:'Focus on measurable value',pt:'Foco em valor mensurável'}, why3_d:{en:'Success defined as operational outcomes — cost, service level, throughput, accuracy.',pt:'Sucesso definido por resultados operacionais — custo, nível de serviço, throughput, precisão.'},
-      why4_t:{en:'Breadth across the stack',pt:'Amplitude em toda a stack'}, why4_d:{en:'Fluent across AI, optimization, analytics, and software — one team, one accountable thread.',pt:'Fluência em IA, otimização, analítica e software — uma equipa, um fio condutor responsável.'},
-      why5_t:{en:'Clear communication',pt:'Comunicação clara'}, why5_d:{en:'Translating between technical depth and business decisions, without losing either.',pt:'Traduzir entre profundidade técnica e decisões de negócio, sem perder nenhuma.'},
-      ct_eyebrow:{en:'05 — Contact',pt:'05 — Contacto'},
-      ct_h2:{en:'Tell us about the system, process, or decision you want to improve.',pt:'Diga-nos que sistema, processo ou decisão quer melhorar.'},
-      ct_p:{en:'Share a short description of your challenge. We will follow up with a considered, technical perspective and clear next steps.',pt:'Partilhe uma breve descrição do seu desafio. Responderemos com uma perspetiva técnica ponderada e próximos passos claros.'},
-      ct_l_name:{en:'Name',pt:'Nome'}, ct_l_email:{en:'Email',pt:'Email'}, ct_l_org:{en:'Organization',pt:'Organização'}, ct_l_msg:{en:'Project',pt:'Projeto'},
-      ct_ph_name:{en:'Your name',pt:'O seu nome'}, ct_ph_email:{en:'you@org.com',pt:'voce@empresa.com'}, ct_ph_org:{en:'Company',pt:'Empresa'}, ct_ph_msg:{en:'Briefly, the problem you want to solve…',pt:'Em breve, o problema que quer resolver…'},
-      ct_send:{en:'Send inquiry',pt:'Enviar pedido'},
-      ct_ok:{en:'Thank you — we will be in touch shortly.',pt:'Obrigado — entraremos em contacto em breve.'},
+      mth_eyebrow:{en:'02 · Approach',pt:'02 · Abordagem'},
+      mth_h2:{en:'How we move from question to result.',pt:'Como passamos da questão ao resultado.'},
+      mth_sub:{en:'Every line of work follows the same disciplined arc, posed precisely, formalized carefully, validated against evidence.',pt:'Cada linha de trabalho segue o mesmo arco disciplinado, colocada com precisão, formalizada com cuidado, validada contra evidência.'},
+      mth1_t:{en:'Pose the question',pt:'Colocar a questão'}, mth1_d:{en:'Identify the open problem, its assumptions, and what a meaningful answer would look like.',pt:'Identificar o problema em aberto, os seus pressupostos e o que seria uma resposta significativa.'},
+      mth2_t:{en:'Formalize',pt:'Formalizar'}, mth2_d:{en:'Cast the problem mathematically, variables, objectives, and the structure of uncertainty.',pt:'Formular o problema matematicamente, variáveis, objetivos e a estrutura da incerteza.'},
+      mth3_t:{en:'Develop the method',pt:'Desenvolver o método'}, mth3_d:{en:'Design algorithms and models, grounded in theory and prior work.',pt:'Desenhar algoritmos e modelos, fundamentados em teoria e trabalho anterior.'},
+      mth4_t:{en:'Experiment & validate',pt:'Experimentar & validar'}, mth4_d:{en:'Test against benchmarks and ground truth, and quantify what was gained.',pt:'Testar contra benchmarks e dados reais, e quantificar o que foi ganho.'},
+      mth5_t:{en:'Share & build',pt:'Partilhar & construir'}, mth5_d:{en:'Publish findings openly and turn them into systems others can use.',pt:'Publicar resultados de forma aberta e transformá-los em sistemas que outros possam usar.'},
+      uc_eyebrow:{en:'03 · Focus',pt:'03 · Focos'},
+      uc_h2:{en:'Where our research reaches.',pt:'Onde a nossa investigação chega.'},
+      uc_sub:{en:'Representative problems and domains where our methods make a difference.',pt:'Problemas e domínios representativos onde os nossos métodos fazem a diferença.'},
+      uc1:{en:'Sequential decision-making',pt:'Decisão sequencial'}, uc2:{en:'Combinatorial optimization',pt:'Otimização combinatória'},
+      uc3:{en:'Learning to optimize',pt:'Aprender a otimizar'}, uc4:{en:'Multi-agent systems',pt:'Sistemas multi-agente'},
+      uc5:{en:'Probabilistic forecasting',pt:'Previsão probabilística'}, uc6:{en:'Uncertainty quantification',pt:'Quantificação de incerteza'},
+      uc7:{en:'Simulation & digital twins',pt:'Simulação & gémeos digitais'}, uc8:{en:'Control under constraints',pt:'Controlo com restrições'},
+      uc9:{en:'Causal inference',pt:'Inferência causal'}, uc10:{en:'Reproducible ML',pt:'ML reproduzível'},
+      why_eyebrow:{en:'04 · Why Gauss',pt:'04 · Porquê a Gauss'},
+      why_h2:{en:'Rigor, in the open.',pt:'Rigor, em aberto.'},
+      why_p:{en:'Gauss exists to turn hard questions in learning and optimization into theory, algorithms, and open systems that others can build on.',pt:'A Gauss existe para transformar questões difíceis em aprendizagem e otimização em teoria, algoritmos e sistemas abertos sobre os quais outros possam construir.'},
+      why_p2:{en:'We work where mathematics meets computation, equally at home in a proof, a benchmark, and a production codebase.',pt:'Trabalhamos onde a matemática encontra a computação, igualmente à vontade numa demonstração, num benchmark e numa base de código em produção.'},
+      why1_t:{en:'Mathematical & analytical rigor',pt:'Rigor matemático e analítico'}, why1_d:{en:'Methods chosen for correctness, not novelty, grounded in statistics and optimization theory.',pt:'Métodos escolhidos pela correção, não pela novidade, fundamentados em estatística e teoria da otimização.'},
+      why2_t:{en:'From theory to system',pt:'Da teoria ao sistema'}, why2_d:{en:'Ideas that run, tested, reproducible, and built to live beyond the paper.',pt:'Ideias que funcionam, testadas, reproduzíveis e feitas para viver além do artigo.'},
+      why3_t:{en:'Open by default',pt:'Aberto por princípio'}, why3_d:{en:'We share methods, code, and results so the work can be checked, reused, and extended.',pt:'Partilhamos métodos, código e resultados para que o trabalho possa ser verificado, reutilizado e estendido.'},
+      why4_t:{en:'Breadth across fields',pt:'Amplitude entre áreas'}, why4_d:{en:'Fluent across ML, RL, and OR, one lab connecting ideas that are usually kept apart.',pt:'Fluência em ML, RL e IO, um laboratório que liga ideias normalmente mantidas separadas.'},
+      why5_t:{en:'Clarity of thought',pt:'Clareza de pensamento'}, why5_d:{en:'Translating between mathematical depth and real-world problems, without losing either.',pt:'Traduzir entre profundidade matemática e problemas reais, sem perder nenhum.'},
+      ct_eyebrow:{en:'05 · Contact',pt:'05 · Contacto'},
+      ct_h2:{en:'Tell us about a problem, a collaboration, or an idea worth exploring.',pt:'Fale-nos de um problema, uma colaboração ou uma ideia que vale a pena explorar.'},
+      ct_p:{en:'Share a short description of what you are working on. We will follow up with a considered, technical perspective and clear next steps.',pt:'Partilhe uma breve descrição daquilo em que está a trabalhar. Responderemos com uma perspetiva técnica ponderada e próximos passos claros.'},
+      ct_l_name:{en:'Name',pt:'Nome'}, ct_l_email:{en:'Email',pt:'Email'}, ct_l_org:{en:'Affiliation',pt:'Afiliação'}, ct_l_msg:{en:'Topic',pt:'Tema'},
+      ct_ph_name:{en:'Your name',pt:'O seu nome'}, ct_ph_email:{en:'you@org.com',pt:'voce@org.com'}, ct_ph_org:{en:'University or company',pt:'Universidade ou empresa'}, ct_ph_msg:{en:'Briefly, the problem or idea you would like to explore…',pt:'Em breve, o problema ou ideia que gostaria de explorar…'},
+      ct_send:{en:'Send message',pt:'Enviar mensagem'},
+      ct_ok:{en:'Thank you, we will be in touch shortly.',pt:'Obrigado, entraremos em contacto em breve.'},
       ft_tag:{en:'Beyond the average',pt:'Além da média'},
       ft_copy:{en:'© 2025 Gauss. All rights reserved.',pt:'© 2025 Gauss. Todos os direitos reservados.'},
-      ft_loc:{en:'Applied AI & Optimization · Porto, Portugal',pt:'IA Aplicada & Otimização · Porto, Portugal'}
+      ft_loc:{en:'AI · ML · RL · OR Research · Porto, Portugal',pt:'Investigação em IA · ML · RL · IO · Porto, Portugal'}
     };
   }
 }
