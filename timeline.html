@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Rui Rodrigues</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        claude: {
+                            bg: '#FDFBF7',
+                            paper: '#F8F6F0',
+                            accent: '#E6EAE5',
+                            text: '#2C363F',
+                            textlight: '#5D6469',
+                            link: '#5C7C75',
+                            border: '#E8E4DB'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FCFBFA; color: #2D2D2D; }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(252, 251, 250, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 50;
+            border-bottom: 1px solid #E5E0D8;
+        }
+        .year-group {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid #E5E0D8;
+        }
+        .year-group::before {
+            content: '';
+            position: absolute;
+            left: -0.48rem;
+            top: 0.35rem;
+            width: 0.85rem;
+            height: 0.85rem;
+            border-radius: 9999px;
+            background: #5C7C75;
+            border: 2px solid #FCFBFA;
+        }
+        .event-row + .event-row { border-top: 1px solid #E8E4DB; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-claude-accent selection:text-claude-text">
+    <nav class="sticky-nav py-4 px-4 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
+        <a href="index.html" class="text-xl font-serif font-semibold text-claude-text tracking-tight">Rui Rodrigues</a>
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm font-medium text-claude-textlight">
+            <a href="index.html" class="hover:text-claude-link transition-colors">Home</a>
+            <a href="timeline.html" class="hover:text-claude-link transition-colors text-claude-link">Timeline</a>
+            <a href="archive.html" class="hover:text-claude-link transition-colors">Archive</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+        <header class="mb-14">
+            <p class="text-sm font-bold uppercase tracking-widest text-claude-link mb-3">Full record</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4 tracking-tight">Timeline</h1>
+            <p class="text-lg text-claude-textlight font-serif max-w-2xl">Publications, projects, education, and professional milestones, ordered by when they happened.</p>
+        </header>
+
+        <div class="space-y-12 ml-2 sm:ml-4">
+            <section class="year-group">
+                <h2 class="text-3xl font-serif font-semibold mb-5">2026</h2>
+                <div class="bg-claude-paper border border-claude-border rounded-xl overflow-hidden">
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">August</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Published <a href="https://doi.org/10.1016/j.est.2026.124120" target="_blank" class="text-claude-link font-medium hover:underline"><em>Refrigerated Containers as Distributed Thermal Energy Storage: Performance and Control Strategies in Port of Sines&rsquo; Microgrid</em></a> in the Journal of Energy Storage.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">July</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Published <a href="https://doi.org/10.1016/j.jup.2026.102277" target="_blank" class="text-claude-link font-medium hover:underline"><em>Loyalty and Tier-Based Benefit Allocation Frameworks for Renewable Energy Communities</em></a> in Utilities Policy.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">June</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Published <a href="https://doi.org/10.1109/EEM68581.2026.11589883" target="_blank" class="text-claude-link font-medium hover:underline"><em>Optimal Membership for Anchor-Centric Renewable Energy Communities</em></a> at EEM 2026.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">April</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Published <a href="https://doi.org/10.1109/OSMSES69376.2026.11457187" target="_blank" class="text-claude-link font-medium hover:underline"><em>Simulation-Based Assessment of Decarbonization Alternatives in Container Terminals</em></a> at OSMSES 2026.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">March</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Reached the Tecstorm 2026 final with <a href="https://optev.pt" target="_blank" class="text-claude-link font-medium hover:underline">OptEV</a>, a smart fleet-charging optimization prototype.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">March</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started developing my master's thesis at INESC TEC.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="year-group">
+                <h2 class="text-3xl font-serif font-semibold mb-5">2025</h2>
+                <div class="bg-claude-paper border border-claude-border rounded-xl overflow-hidden">
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">December</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Published <a href="https://doi.org/10.1109/efea67685.2025.11386032" target="_blank" class="text-claude-link font-medium hover:underline"><em>Data-Driven Digitalization of Container Ship Electrical Systems for AI-Ready Onshore Power Supply Demand Estimation</em></a> at EFEA.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="year-group">
+                <h2 class="text-3xl font-serif font-semibold mb-5">2024</h2>
+                <div class="bg-claude-paper border border-claude-border rounded-xl overflow-hidden">
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">October</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started as a Researcher at INESC TEC.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">September</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started the MSc in Industrial Engineering and Management at FEUP.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">June</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started a summer internship at INESC TEC, later awarded Best Summer Internship at CPES.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">March</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Became Development Manager at ACM FEUP.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="year-group">
+                <h2 class="text-3xl font-serif font-semibold mb-5">2023</h2>
+                <div class="bg-claude-paper border border-claude-border rounded-xl overflow-hidden">
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">December</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started as a Consultant Intern at INEGI.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="year-group">
+                <h2 class="text-3xl font-serif font-semibold mb-5">2021</h2>
+                <div class="bg-claude-paper border border-claude-border rounded-xl overflow-hidden">
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">October</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started volunteering as a tutor at Centro Social Paroquial de S. Nicolau.</p>
+                    </article>
+                    <article class="event-row grid sm:grid-cols-[7rem_1fr] gap-2 sm:gap-5 p-5">
+                        <time class="text-sm font-bold text-claude-link">September</time>
+                        <p class="text-sm text-claude-textlight leading-relaxed">Started the BSc in Industrial Engineering and Management at FEUP.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-t border-claude-border mt-12 py-8 text-center text-sm text-claude-textlight">
+        <p>&copy; 2026 Rui Rodrigues</p>
+    </footer>
+</body>
+</html>
